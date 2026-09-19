@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "kaiboard": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@kaibuddy/kaiboard-mcp",
+        "--relay"
+      ],
+      "env": {
+        "KAIBOARD_TOKEN": "<paste the token from KaiBoard's \"Agent co-draw\" panel>"
+      }
+    }
+  }
+}

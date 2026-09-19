@@ -1,0 +1,40 @@
+# 依赖与缓存（本仓不是 npm 包；roughjs 是运行时按需安装的）
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 脚本产物（自测 / 预览生成物，不入库）
+_selftest.excalidraw
+_selftest.svg
+*.excalidraw.svg
+
+# 本地素材缓存（按需取件，第三方资产不分发）
+libs/
+
+# 私有工作区（双保险：本目录将来出现 internal/ 也不提交）
+internal/
+
+# 环境与密钥（绝不入库）
+.env
+.env.*
+!.env.example
+
+# 日志与临时文件
+*.log
+.cache/
+.tmp/
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
