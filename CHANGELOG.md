@@ -5,6 +5,27 @@
 
 ---
 
+## [0.2.0] - 2026-09-21 · 命令面扩充与边界说明
+
+跟进 `kaiboard-mcp` `0.3.0`：补齐文件树管理命令的文档，并把"写死的清单"改为可自省的引用。
+
+Follows `kaiboard-mcp` `0.3.0`: documents the new file-tree management commands, and replaces hard-coded lists with self-describing references.
+
+### Added / 新增
+
+- **命令表补齐至 14 个**：新增 `createFolder` / `renameBoard` / `renameFolder`，并补上此前缺失的 `deleteBoard` / `setMetadata`。
+- **新增共同铁律：画板与文件夹的删除、新建边界** —— `deleteBoard` 不能删除"当前打开着的画板"（属设计约束，不是故障）；`createBoard` / `createFolder` 的父级必须是已存在的文件夹。并写明**遇到这类"预期内的拒绝"时如何向用户说明并给出下一步**。
+
+  **New common rule on delete/create boundaries** — `deleteBoard` cannot remove the board that is currently open (a deliberate constraint, not a failure); parents must be existing folders. It also spells out how to explain such expected refusals to the user and offer a next step.
+
+- **排错**：补充 `NO_BACKEND` 的成因与处置（既没起中继也没绑文件夹时会命中）。
+
+### Changed / 变更
+
+- **不再写死工具数量与清单**：改为"以 `kbfs_list_capabilities` 返回的 `commands` 为准" —— 命令集会随版本增减，写死必然漂移。
+- **接入提醒的措辞**：改为先说清"是什么情况"，再给出两个可选做法（用户自己操作 / 让 Agent 代做）。
+
+---
 ## [0.1.0] - 2026-09-18 · 首个公开发布版 / First public release
 
 首个公开发布版本。`0.x` 表示 API 与内容在次版本之间仍可能变化。
