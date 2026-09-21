@@ -44,6 +44,9 @@ KaiBoard 内建轮询客户端  ← 校验 origin+令牌，经 Excalidraw API �
 | `deleteElement` | `kbfs_delete_element` | 按 id 删元素 | `ids`、`boardId?` |
 | `replaceBoard` | `kbfs_replace_board` | 整板替换（**破坏性，需用户明确授权**） | `elements`、`boardId?`、`source?` |
 | `createBoard` | `kbfs_create_board` | 新建画板，返回 `boardId` | `name?`、`parentId?`、`elements?` |
+| `createFolder` | `kbfs_create_folder` | 新建文件夹，返回 `folderId` | `name`、`parentId?` |
+| `renameBoard` | `kbfs_rename_board` | 改画板名（返回 `previousName`） | `boardId`、`name` |
+| `renameFolder` | `kbfs_rename_folder` | 改文件夹名（返回 `previousName`） | `folderId`、`name` |
 | `fromMermaid` | `kbfs_from_mermaid` | Mermaid 源码 → **原生可编辑图元**并落板 | `mermaid`、`boardId?`、`opts{replace,fontSize}` |
 
 响应：`{ type:"kaiboard-agent-resp", id, ok, ... }`（`elements` / `ids` / `dataUrl` / `boardId` / `nodes` 视命令而定）
@@ -241,7 +244,13 @@ KaiBoard 内建轮询客户端  ← 校验 origin+令牌，经 Excalidraw API �
 
 直接用 MCP 工具（**`kbfs_` 前缀**：`kbfs_get_board` / `kbfs_add_element` / `kbfs_replace_board` / `kbfs_from_mermaid` / `kbfs_list_capabilities` / …见上方指令协议表）。
 
-> 🔴 **工具前缀统一为 `kbfs_`** —— 工具名绑定「KaiBoard 文件系统」语义，与产品名解耦。全部 12 个：`kbfs_get_board` / `kbfs_get_screenshot` / `kbfs_list_boards` / `kbfs_add_element` / `kbfs_patch_element` / `kbfs_delete_element` / `kbfs_replace_board` / `kbfs_create_board` / `kbfs_delete_board` / `kbfs_from_mermaid` / `kbfs_set_metadata` / `kbfs_list_capabilities`。
+> 🔴 **工具前缀统一为 `kbfs_`** —— 工具名绑定「KaiBoard 文件系统」语义，与产品名解耦。
+>
+> **完整清单以 `kbfs_list_capabilities` 返回的 `commands` 为准**，本文件**不再写死数量与清单**：
+> 命令集会随版本增减，写死必然漂移（本文档历史上就因写死「12 个」而失准过）。
+>
+> ⏳ **本版新增**（需 MCP ≥ 下一版）：`createFolder` / `renameBoard` / `renameFolder`
+> —— 若 `list_capabilities` 里还没有它们，说明你连的还是旧版 MCP，此时**请让用户在界面上手动建/改名**。
 
 ### 3) MCP 接入（供任意 MCP 客户端）
 统一 MCP 包 `@kaibuddy/kaiboard-mcp`（`--relay`）把共绘动作暴露成 **`kbfs_*` 工具**（对应上表全部命令）。
