@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "kaiboard-skills",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Official KaiBoard skills — draw and edit diagrams on your local-first KaiBoard whiteboard with an AI agent.",
   "license": "MIT",
   "homepage": "https://kaiboard.kaibuddy.com",

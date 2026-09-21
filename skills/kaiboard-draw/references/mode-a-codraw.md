@@ -48,6 +48,11 @@ KaiBoard 内建轮询客户端  ← 校验 origin+令牌，经 Excalidraw API �
 | `renameBoard` | `kbfs_rename_board` | 改画板名（返回 `previousName`） | `boardId`、`name` |
 | `renameFolder` | `kbfs_rename_folder` | 改文件夹名（返回 `previousName`） | `folderId`、`name` |
 | `deleteBoard` | `kbfs_delete_board` | **软删除**画板（进回收站，可还原）。**不能删当前打开着的板** | `boardId`（必填） |
+| `deleteFolder` | `kbfs_delete_folder` | **软删除**文件夹及其全部子孙（可还原）。**不能删含当前打开画板的文件夹** | `folderId`（必填） |
+| `listTrash` | `kbfs_list_trash` | 回收站顶层条目（子孙不重复列）| — |
+| `restoreNode` | `kbfs_restore_node` | 从回收站**还原**（连整棵子树；原父级不在则落到根层）| `nodeId`（必填） |
+| `moveNode` | `kbfs_move_node` | 移动到另一父级（画板/文件夹皆可，含防环）| `nodeId`、`parentId?` |
+| `reorderNode` | `kbfs_reorder_node` | 调整同层排序权重（越小越靠前）| `nodeId`、`order` |
 | `setMetadata` | `kbfs_set_metadata` | 写画板级元数据（status / version / history / comments）| `boardId?`、`metadata` |
 | `fromMermaid` | `kbfs_from_mermaid` | Mermaid 源码 → **原生可编辑图元**并落板 | `mermaid`、`boardId?`、`opts{replace,fontSize}` |
 
