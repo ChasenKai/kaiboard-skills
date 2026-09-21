@@ -47,6 +47,8 @@ KaiBoard 内建轮询客户端  ← 校验 origin+令牌，经 Excalidraw API �
 | `createFolder` | `kbfs_create_folder` | 新建文件夹，返回 `folderId` | `name`、`parentId?` |
 | `renameBoard` | `kbfs_rename_board` | 改画板名（返回 `previousName`） | `boardId`、`name` |
 | `renameFolder` | `kbfs_rename_folder` | 改文件夹名（返回 `previousName`） | `folderId`、`name` |
+| `deleteBoard` | `kbfs_delete_board` | **软删除**画板（进回收站，可还原）。**不能删当前打开着的板** | `boardId`（必填） |
+| `setMetadata` | `kbfs_set_metadata` | 写画板级元数据（status / version / history / comments）| `boardId?`、`metadata` |
 | `fromMermaid` | `kbfs_from_mermaid` | Mermaid 源码 → **原生可编辑图元**并落板 | `mermaid`、`boardId?`、`opts{replace,fontSize}` |
 
 响应：`{ type:"kaiboard-agent-resp", id, ok, ... }`（`elements` / `ids` / `dataUrl` / `boardId` / `nodes` 视命令而定）
@@ -249,8 +251,8 @@ KaiBoard 内建轮询客户端  ← 校验 origin+令牌，经 Excalidraw API �
 > **完整清单以 `kbfs_list_capabilities` 返回的 `commands` 为准**，本文件**不再写死数量与清单**：
 > 命令集会随版本增减，写死必然漂移（本文档历史上就因写死「12 个」而失准过）。
 >
-> ⏳ **本版新增**（需 MCP ≥ 下一版）：`createFolder` / `renameBoard` / `renameFolder`
-> —— 若 `list_capabilities` 里还没有它们，说明你连的还是旧版 MCP，此时**请让用户在界面上手动建/改名**。
+> **`createFolder` / `renameBoard` / `renameFolder` 需要较新的 MCP 包**：
+> 若 `list_capabilities` 的 `commands` 里没有它们，说明你连的是旧版 —— 此时**请让用户在界面上手动建 / 改名**。
 
 ### 3) MCP 接入（供任意 MCP 客户端）
 统一 MCP 包 `@kaibuddy/kaiboard-mcp`（`--relay`）把共绘动作暴露成 **`kbfs_*` 工具**（对应上表全部命令）。
