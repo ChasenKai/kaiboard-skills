@@ -327,7 +327,7 @@ MCP 工具 `kbfs_add_element` / `kbfs_replace_board` 的 `file` 参数，要求�
 
 ## 安全（必读）
 - 共绘默认关闭；开启才生成令牌，令牌不匹配/来源不符一律不响应。
-- **显式授权**：用户把「中继令牌」从 KaiBoard 设置复制、粘贴进 Agent 的 MCP 配置，才算授权该 Agent；Agent 不会自动发现令牌。
+- **显式授权**：用户把「中继令牌」从 KaiBoard 的 **AI 面板**复制、粘贴进 Agent 的 MCP 配置，才算授权该 Agent；Agent 不会自动发现令牌。
 - 中继仅绑 127.0.0.1 + 令牌；userscript 仅把指令 postMessage 进同源页，绝不静默外发画板内容。
 - 敏感动作（replaceBoard）在 KaiBoard 侧以 toast 透明提示，用户可见。
 
