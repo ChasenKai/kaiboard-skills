@@ -106,6 +106,9 @@ python scripts/lib_resolver.py --ensure "IT Logos"   # 把命中库下载并缓�
 ```
 取件后该库即被生成器自动识别：Mode B 直接按图标名嵌入；Mode A 取元素数组后实时注入画布。
 
+> 🔴 **落地的坑与布局配方一律先看 `references/library-recipes.md`** —— 含 v1/v2 格式差异、
+> 组件自带英文标签要丢、归一化四件事、**卡片图标放右侧**、出图前先跑 `geometry_check.py`。
+
 **合规**：社区库多为 MIT。取用的素材请在帮助或产物中标注来源，保持开源诚信。
 
 > **不随本仓分发任何素材库实体文件** —— 素材是第三方作者的资产，各有其许可；本仓只提供**在线检索与按需取件**能力，以及一份可检索的清单概览（`references/asset-catalog.md`）。
@@ -118,6 +121,7 @@ python scripts/lib_resolver.py --ensure "IT Logos"   # 把命中库下载并缓�
 | `references/mode-b-file.md` | **Mode B 完整工作流**：spec → 合法 `.excalidraw`（hachure + 语义配色 + 绑定箭头 + 自适应尺寸） |
 | `references/drawing-methodology.md` | **广义画图方法论（总纲）**：风格档位 + 视觉技法 + 箭头路由 + 标注 + 构图 + 图类型→技法映射 |
 | `references/asset-catalog.md` | 社区素材库检索清单概览（按主题分类 + 常用候补） |
+| `references/library-recipes.md` | **素材库实战配方**：检索心法 / 组件复用的三个坑 / 卡片布局（图标右侧）/ 出图前自检 / 风格档位 |
 | `references/source-provenance.md` | 上游与溯源 |
 | `scripts/gen_excalidraw.py` | spec → 合法 `.excalidraw`（Mode B 生成器） |
 | `scripts/geometry_check.py` | 落板自检工具：穿框 / 重叠 / 悬空绑定 / 重复 id 四项确定性检测 |
