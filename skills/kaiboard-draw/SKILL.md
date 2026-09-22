@@ -122,7 +122,6 @@ python scripts/lib_resolver.py --ensure "IT Logos"   # 把命中库下载并缓�
 | `references/drawing-methodology.md` | **广义画图方法论（总纲）**：风格档位 + 视觉技法 + 箭头路由 + 标注 + 构图 + 图类型→技法映射 |
 | `references/asset-catalog.md` | 社区素材库检索清单概览（按主题分类 + 常用候补） |
 | `references/library-recipes.md` | **素材库实战配方**：检索心法 / 组件复用的三个坑 / 卡片布局（图标右侧）/ 出图前自检 / 风格档位 |
-| `references/outbound-assets.md` | **对外配图生产 SOP**：三种取图方式 / 坐标纪律（取真值不目测）/ Agent presence 20 秒窗口 / 出图前必删 / 目录约定 |
 | `references/source-provenance.md` | 上游与溯源 |
 | `scripts/gen_excalidraw.py` | spec → 合法 `.excalidraw`（Mode B 生成器） |
 | `scripts/geometry_check.py` | 落板自检工具：穿框 / 重叠 / 悬空绑定 / 重复 id 四项确定性检测 |
